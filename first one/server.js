@@ -4,7 +4,7 @@ const server= http.createServer((req,res)=>{
     console.log(req.url)
     res.write("Welcome to node js server")
     if(req.url=="/jobs") {
-       return res.end("You are on job Portal")
+       return res.end("You are on job Portal bharati")
     
     }
     
