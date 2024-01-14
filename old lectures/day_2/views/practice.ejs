@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/css/practice.css">
+</head>
+
+<body>
+    <h1>Contact List</h1>
+
+    <!-- <ul>
+        <% for(let i=1;i<11;i++) { %>
+            <li><%= i %></li>
+        <% } %>
+    </ul> -->
+    <table class="map">
+        <tr>
+            <th>Name</th>
+            <th>Phone no</th>
+        </tr>
+        <% contact_list.forEach(contact=>{%>
+            <tr>
+                <td>
+                    <%= contact.name %>
+                </td>
+                <td>
+                    <%= contact.phone %>
+                </td>
+                <td>
+                    <!-- using params -->
+
+                    <!-- <a href="/delete-contact/<%= contact.phone %>">
+                        X
+                    </a> -->
+
+                    <!-- using querry params -->
+
+                    <!-- <a href="/delete-contact/?phone=<%= contact.phone %>">
+                        X
+                    </a> -->
+
+                    <!-- while using mongo -->
+                    <a href="/delete-contact/?id=<%= contact._id %>">
+                        X
+                    </a>
+                  </td>
+
+            </tr>
+            <%}) %>
+
+
+    </table>
+    <br><br><br>
+    <form action="/create-contact" method="POST">
+        <label for="name">
+            Name :
+            <input type="text" name="name" id="" placeholder="Your Name" required>
+        </label>
+        <label for="phone">
+            Phone No.:
+            <input type="number" name="phone" id="" placeholder="Phone No." required>
+        </label>
+        <button type="submit">ADD</button>
+    </form>
+
+    <script src="/js/practice.js"></script>
+</body>
+
+</html>
