@@ -9,7 +9,7 @@ const db =require('./config/mongoose')
 const session=require('express-session')
 const passport=require("passport")
 const passportLocal=require('./config/passport-local-strategy')
-const MongoStore =require('connect-mongo') (session)
+const MongoStore =require('connect-mongo')
 
 
 app.use(express.urlencoded({ extended: true }));
@@ -35,8 +35,11 @@ const sessionMiddleware = session({
       maxAge: 1000 * 60 * 100,
     },
     store: new MongoStore({
-      mongooseConnection: db, // Assuming 'db' is your mongoose connection
+      mongoUrl:'mongodb+srv://kushalrao103:u61WuUdnLhDjJK24@cluster0.peevqcr.mongodb.net/?retryWrites=true&w=majority',
+      // mongooseConnection: db, // Assuming 'db' is your mongoose connection
       autoRemoveInterval: 60 * 60 * 24,  // Auto-remove expired sessions every 24 hours
+    },(err)=>{
+      console.log(err || 'connect-mongodb setup ok')
     }),
   });
   
